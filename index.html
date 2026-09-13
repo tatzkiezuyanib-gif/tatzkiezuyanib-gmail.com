@@ -1,0 +1,1747 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>BSIS Information System - Portfolio</title>
+
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  background: black;
+  color: white;
+  scroll-behavior: smooth;
+  line-height: 1.6;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #0d1a29f3;
+  padding: 12px 40px;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 2px 10px rgba(0,255,255,0.2);
+}
+
+.left-section {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.small-logo {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  border: 2px solid cyan;
+  object-fit: cover;
+  cursor: pointer;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.small-logo:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 10px cyan;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: #00ffff;
+  font-weight: bold;
+  transition: color 0.3s, transform 0.3s;
+}
+
+.nav-links a:hover {
+  color: #ff00ff;
+  transform: scale(1.1);
+}
+
+section {
+  max-width: 1100px;
+  margin: 70px auto;
+  padding: 20px;
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  background: #111;
+  padding: 40px;
+  border-radius: 12px;
+  box-shadow: 0 6px 20px rgba(0,255,255,0.1);
+  gap: 40px;
+  position: relative;
+  overflow: hidden;
+}
+
+.text {
+  flex: 1;
+}
+
+.text h1 {
+  font-size: 2.5rem;
+  color: cyan;
+  margin-bottom: 10px;
+}
+
+.text h2 {
+  color: #ff80ff;
+  margin-bottom: 15px;
+  opacity: 0;
+  animation: fadeSlideIn 2s forwards;
+  animation-delay: 0.5s;
+}
+
+.text p {
+  color: #e0e0e0;
+}
+
+.profile img {
+  width: 220px;
+  height: 220px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 4px solid cyan;
+  box-shadow: 0 0 15px cyan;
+  transition: transform 0.3s;
+  animation: float 3s ease-in-out infinite;
+  position: relative;
+  overflow: hidden;
+}
+
+.profile img:hover {
+  transform: scale(1.05);
+}
+
+.social-links {
+  margin-top: 15px;
+}
+
+.social-links a {
+  margin-right: 10px;
+  padding: 8px 15px;
+  border-radius: 6px;
+  color: white;
+  font-weight: bold;
+  text-decoration: none;
+  transition: transform 0.3s, box-shadow 0.3s;
+  display: inline-block;
+}
+
+.social-links a:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 0 10px white;
+}
+
+.facebook {
+  background: #1877F2;
+}
+
+.instagram {
+  background: linear-gradient(45deg,#feda75,#fa7e1e,#d62976,#962fbf,#4f5bd5);
+}
+
+.github {
+  background: #111;
+  border: 1px solid white;
+}
+
+.youtube {
+  background: #FF0000;
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes fadeSlideIn {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.about-section {
+  display: flex;
+  gap: 30px;
+  align-items: flex-start;
+  background: #111;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 6px 15px rgba(0,255,255,0.15);
+  position: relative;
+  overflow: hidden;
+}
+
+.about-section img {
+  width: 160px;
+  height: 160px;
+  border-radius: 12px;
+  object-fit: cover;
+  border: 2px solid cyan;
+}
+
+.about-text h2 {
+  color: cyan;
+  margin-bottom: 10px;
+}
+
+.about-text h3 {
+  color: #ff80ff;
+}
+
+.projects {
+  text-align: center;
+}
+
+.projects h1 {
+  color: cyan;
+  margin-bottom: 20px;
+}
+
+.projects-grid {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 25px;
+}
+
+.project-card {
+  width: 300px;
+  background: #111;
+  border-radius: 12px;
+  box-shadow: 0 0 15px rgba(0,255,255,0.15);
+  overflow: hidden;
+  transition: transform 0.3s, box-shadow 0.3s;
+  position: relative;
+}
+
+.project-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 0 20px cyan;
+}
+
+.project-card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+
+.project-card h3 {
+  margin: 10px;
+  color: #ff80ff;
+}
+
+.project-card p {
+  margin: 0 10px 15px;
+  font-size: 0.9rem;
+  color: #ddd;
+}
+
+.project-card a {
+  display: inline-block;
+  margin: 0 10px 10px;
+  padding: 8px 12px;
+  border-radius: 6px;
+  background: cyan;
+  color: black;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background 0.3s;
+}
+
+.project-card a:hover {
+  background: #00e6e6;
+}
+
+.skills {
+  text-align: center;
+}
+
+.skills h1 {
+  color: cyan;
+  margin-bottom: 20px;
+}
+
+.skills-cards {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 25px;
+}
+
+.card {
+  width: 300px;
+  background: #111;
+  border-radius: 12px;
+  padding: 25px;
+  box-shadow: 0 0 15px rgba(255,255,255,0.1);
+  transition: transform 0.3s, background 0.3s;
+  position: relative;
+  overflow: hidden;
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  background: #0d1b2a;
+  box-shadow: 0 0 10px cyan;
+}
+
+.card h3 {
+  margin-bottom: 10px;
+  color: #00ffff;
+}
+
+.card p {
+  color: #ccc;
+}
+
+.contact {
+  background: #111;
+  border-radius: 12px;
+  padding: 30px;
+  box-shadow: 0 0 20px rgba(0,255,255,0.15);
+  position: relative;
+  overflow: hidden;
+}
+
+.contact h1 {
+  color: cyan;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.contact-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+}
+
+.contact-info {
+  flex: 1;
+}
+
+.contact-form {
+  flex: 2;
+}
+
+.form-group {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+input,
+textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #333;
+  border-radius: 6px;
+  background: #000;
+  color: #fff;
+  transition: border 0.3s, box-shadow 0.3s;
+}
+
+input:focus,
+textarea:focus {
+  border-color: cyan;
+  box-shadow: 0 0 8px cyan;
+  outline: none;
+}
+
+button {
+  padding: 12px 20px;
+  border: none;
+  border-radius: 6px;
+  background: cyan;
+  color: black;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background 0.3s, transform 0.3s, box-shadow 0.3s;
+}
+
+button:hover {
+  background: #00e6e6;
+  transform: translateY(-2px);
+  box-shadow: 0 0 12px cyan;
+}
+
+.map-section {
+  text-align: center;
+  margin-top: 30px;
+  position: relative;
+  overflow: hidden;
+  border-radius: 12px;
+}
+
+.map-section iframe {
+  width: 100%;
+  height: 350px;
+  border: none;
+  border-radius: 12px;
+  box-shadow: 0 0 15px cyan;
+}
+
+.map-section h2 {
+  color: #ff80ff;
+}
+
+.map-section a {
+  display: inline-block;
+  margin-top: 10px;
+  color: cyan;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.map-section a:hover {
+  text-decoration: underline;
+  color: #ff80ff;
+}
+
+footer {
+  background: #0d1b2a;
+  color: cyan;
+  text-align: center;
+  padding: 15px;
+  margin-top: 40px;
+  box-shadow: 0 -2px 10px rgba(0,255,255,0.2);
+}
+
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .about-section {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .contact-container {
+    flex-direction: column;
+  }
+
+  .form-group {
+    flex-direction: column;
+  }
+
+  .navbar {
+    padding: 12px 15px;
+  }
+
+  .nav-links {
+    gap: 10px;
+    font-size: 14px;
+  }
+
+  .profile img {
+    width: 190px;
+    height: 190px;
+  }
+}
+
+@keyframes rotateBorder {
+  0% {
+    background-position: 0% 50%;
+    transform: rotate(0deg);
+  }
+
+  100% {
+    background-position: 100% 50%;
+    transform: rotate(360deg);
+  }
+}
+
+.container::before,
+.about-section::before,
+.project-card::before,
+.contact::before,
+.card::before,
+.map-section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  padding: 2px;
+  border-radius: inherit;
+  background: linear-gradient(
+    45deg,
+    cyan,
+    lightcyan,
+    #00ffff,
+    cyan
+  );
+  background-size: 300% 300%;
+  animation: rotateBorder 5s linear infinite;
+  z-index: -1;
+  mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  mask-composite: exclude;
+  -webkit-mask-composite: destination-out;
+}
+
+.media-section {
+  max-width: 1100px;
+  margin: 70px auto;
+  padding: 20px;
+  text-align: center;
+}
+
+.media-section h1 {
+  color: cyan;
+  margin-bottom: 10px;
+}
+
+.media-section p {
+  color: #ccc;
+  margin-bottom: 20px;
+}
+
+.media-upload-box {
+  background: #111;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 0 20px rgba(0,255,255,0.15);
+  margin-bottom: 30px;
+  position: relative;
+}
+
+.media-upload-box h2 {
+  color: #ff80ff;
+  margin-bottom: 15px;
+}
+
+.media-upload {
+  display: inline-block;
+  padding: 12px 20px;
+  background: cyan;
+  color: black;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+  margin: 5px;
+}
+
+.media-upload:hover {
+  background: #00e6e6;
+  transform: translateY(-2px);
+  box-shadow: 0 0 12px cyan;
+}
+
+#pictureInput,
+#videoInput,
+#fileInput {
+  display: none;
+}
+
+.media-gallery {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 25px;
+}
+
+.media-item {
+  width: 300px;
+  background: #111;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 0 15px rgba(0,255,255,0.15);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.media-item:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 0 20px cyan;
+}
+
+.media-item img,
+.media-item video {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  display: block;
+  background: black;
+}
+
+.media-item h3 {
+  color: #ff80ff;
+  padding: 12px;
+  font-size: 16px;
+}
+
+.delete-media {
+  margin: 0 0 15px;
+  padding: 8px 14px;
+  background: #ff1744;
+  color: white;
+  border-radius: 6px;
+  cursor: pointer;
+  border: none;
+}
+
+.delete-media:hover {
+  background: #d50000;
+}
+
+.project-detail {
+  display: none;
+  max-width: 1100px;
+  margin: 70px auto;
+  padding: 20px;
+  text-align: center;
+}
+
+.project-detail.active {
+  display: block;
+}
+
+.project-detail-box {
+  background: #111;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 0 20px rgba(0,255,255,0.15);
+}
+
+.project-detail h1 {
+  color: cyan;
+  margin-bottom: 10px;
+}
+
+.project-detail p {
+  color: #ccc;
+  margin-bottom: 20px;
+}
+
+.back-projects {
+  display: inline-block;
+  padding: 10px 18px;
+  background: cyan;
+  color: black;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: bold;
+  margin-bottom: 25px;
+  cursor: pointer;
+}
+
+.detail-upload-box {
+  background: #000;
+  padding: 25px;
+  border-radius: 12px;
+  margin-bottom: 25px;
+  box-shadow: 0 0 15px rgba(0,255,255,0.1);
+}
+
+.detail-upload-box h2 {
+  color: #ff80ff;
+  margin-bottom: 15px;
+}
+
+.detail-gallery {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 25px;
+}
+
+.detail-item {
+  width: 300px;
+  background: #111;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 0 15px rgba(0,255,255,0.15);
+}
+
+.detail-item img,
+.detail-item video {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  display: block;
+  background: black;
+}
+
+.detail-item h3 {
+  color: #ff80ff;
+  padding: 12px;
+  font-size: 16px;
+}
+
+.detail-item .delete-media {
+  margin-bottom: 15px;
+}
+
+.file-item {
+  padding: 20px;
+  text-align: center;
+}
+
+.file-item .file-icon {
+  font-size: 55px;
+  margin-bottom: 10px;
+}
+
+.file-item a {
+  color: cyan;
+  text-decoration: none;
+  font-weight: bold;
+  word-break: break-word;
+}
+
+.file-item a:hover {
+  color: #ff80ff;
+}
+
+@media (max-width: 768px) {
+  .media-section {
+    padding: 15px;
+  }
+
+  .media-item {
+    width: 100%;
+    max-width: 350px;
+  }
+
+  .media-item img,
+  .media-item video {
+    height: 220px;
+  }
+
+  .project-detail {
+    padding: 15px;
+  }
+
+  .project-detail-box {
+    padding: 20px;
+  }
+
+  .detail-item {
+    width: 100%;
+    max-width: 350px;
+  }
+
+  .detail-item img,
+  .detail-item video {
+    height: 220px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<nav class="navbar">
+  <div class="left-section">
+    <img
+      src="be922058-43ce-4739-93b4-4d0f18be590d.jpg"
+      alt="Logo"
+      class="small-logo"
+      onclick="scrollToHome()"
+    >
+
+    <a
+      href="#home"
+      style="color:cyan; font-weight:bold; text-decoration:none;"
+    >
+      🏠 Home
+    </a>
+  </div>
+
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<section id="home" class="container">
+  <div class="text">
+    <h1>Hello, I am Tat'zkie</h1>
+
+    <h2>Welcome to my BSIS website</h2>
+
+    <p>
+      I am Tat'zkie, a passionate beginner in web and mobile development.
+      I started my coding journey in 2025 when I chose BSIS.
+      Now, I continue to sharpen my dreams through every line of code.
+    </p>
+
+    <div class="social-links">
+      <a
+        href="https://www.facebook.com/share/1J82xdvygb/"
+        class="facebook"
+        target="_blank"
+      >
+        Facebook
+      </a>
+
+      <a
+        href="https://www.instagram.com/tatzkiezuyanib/"
+        class="instagram"
+        target="_blank"
+      >
+        Instagram
+      </a>
+
+      <a
+        href="https://github.com/"
+        class="github"
+        target="_blank"
+      >
+        GitHub
+      </a>
+
+      <a
+        href="https://www.youtube.com/"
+        class="youtube"
+        target="_blank"
+      >
+        YouTube
+      </a>
+    </div>
+  </div>
+
+  <div class="profile">
+    <img
+      src="tatz.jpg"
+      alt="Profile Picture"
+    >
+  </div>
+</section>
+
+<section id="about" class="about-section">
+  <img
+    src="tatz.jpg"
+    alt="About Me"
+  >
+
+  <div class="about-text">
+    <h2>About Me</h2>
+
+    <h3>I am Tat'zkie</h3>
+
+    <p>
+      Before I discovered programming, it was a mystery.
+      In 2025, I opened the door and started this journey.
+      Now as a first-year BSIS student at Western Philippines University,
+      I dedicate sleepless nights to coding, building, and dreaming big.
+    </p>
+  </div>
+</section>
+
+<section id="projects" class="projects">
+  <h1>My Projects</h1>
+
+  <div class="projects-grid">
+
+    <div class="project-card">
+      <img
+        src="f056397f-f04d-4e2f-a725-45eef88b5411.jpg"
+        alt="Video Editing"
+      >
+
+      <h3>Tat'z Video</h3>
+
+      <p>
+        Created a short school event video showcasing visuals and storytelling.
+      </p>
+
+      <a
+        href="#"
+        onclick="openVideoProject(event)"
+      >
+        Video
+      </a>
+    </div>
+
+    <div class="project-card">
+      <img
+        src="19f14d18-c416-4c85-9c41-0c14319873e2.jpg"
+        alt="Photography"
+      >
+
+      <h3>Tat'z Gallery</h3>
+
+      <p>
+        Captured portraits and landscapes with creative lighting.
+      </p>
+
+      <a
+        href="#"
+        onclick="openGalleryProject(event)"
+      >
+        Gallery
+      </a>
+    </div>
+
+    <div class="project-card">
+      <img
+        src="1ac5171a-f389-4200-8c56-3134e08647a2.jpg"
+        alt="my Tat'z Thumbnail"
+      >
+
+      <h3>My Tat'z Files</h3>
+
+      <p>
+        Tat’z: Hardworking, creative, positive Talented.
+      </p>
+
+      <a
+        href="#"
+        onclick="openFilesProject(event)"
+      >
+        My File
+      </a>
+    </div>
+
+  </div>
+</section>
+
+<section id="skills" class="skills">
+  <h1>My Skills</h1>
+
+  <div class="skills-cards">
+
+    <div class="card">
+      <h3>💻 Web Development</h3>
+      <p>
+        HTML, CSS, JavaScript, React, Bootstrap, Tailwind.
+      </p>
+    </div>
+
+    <div class="card">
+      <h3>⚙️ Backend Development</h3>
+      <p>
+        MySQL, PHP, Node.js, Express.
+      </p>
+    </div>
+
+    <div class="card">
+      <h3>📱 Mobile App Development</h3>
+      <p>
+        React Native for iOS & Android apps.
+      </p>
+    </div>
+
+  </div>
+</section>
+
+<section id="videoProject" class="project-detail">
+
+  <div class="project-detail-box">
+
+    <a
+      href="#projects"
+      class="back-projects"
+      onclick="backToProjects(event)"
+    >
+      ← Back to Projects
+    </a>
+
+    <h1>🎥 Tat'z Video</h1>
+
+    <p>
+      Upload and view your videos here.
+    </p>
+
+    <div class="detail-upload-box">
+
+      <h2>Upload Video</h2>
+
+      <label
+        for="projectVideoInput"
+        class="media-upload"
+      >
+        🎥 Choose Video
+      </label>
+
+      <input
+        type="file"
+        id="projectVideoInput"
+        accept="video/*"
+        multiple
+        style="display:none;"
+      >
+
+    </div>
+
+    <div
+      id="videoProjectGallery"
+      class="detail-gallery"
+    ></div>
+
+  </div>
+
+</section>
+
+<section id="galleryProject" class="project-detail">
+
+  <div class="project-detail-box">
+
+    <a
+      href="#projects"
+      class="back-projects"
+      onclick="backToProjects(event)"
+    >
+      ← Back to Projects
+    </a>
+
+    <h1>📸 Tat'z Gallery</h1>
+
+    <p>
+      Upload and view your pictures here.
+    </p>
+
+    <div class="detail-upload-box">
+
+      <h2>Upload Picture</h2>
+
+      <label
+        for="projectPictureInput"
+        class="media-upload"
+      >
+        📸 Choose Picture
+      </label>
+
+      <input
+        type="file"
+        id="projectPictureInput"
+        accept="image/*"
+        multiple
+        style="display:none;"
+      >
+
+    </div>
+
+    <div
+      id="galleryProjectGallery"
+      class="detail-gallery"
+    ></div>
+
+  </div>
+
+</section>
+
+<section id="filesProject" class="project-detail">
+
+  <div class="project-detail-box">
+
+    <a
+      href="#projects"
+      class="back-projects"
+      onclick="backToProjects(event)"
+    >
+      ← Back to Projects
+    </a>
+
+    <h1>📁 My Tat'z Files</h1>
+
+    <p>
+      Upload and view your files here.
+    </p>
+
+    <div class="detail-upload-box">
+
+      <h2>Upload File</h2>
+
+      <label
+        for="projectFileInput"
+        class="media-upload"
+      >
+        📁 Choose File
+      </label>
+
+      <input
+        type="file"
+        id="projectFileInput"
+        multiple
+        style="display:none;"
+      >
+
+    </div>
+
+    <div
+      id="filesProjectGallery"
+      class="detail-gallery"
+    ></div>
+
+  </div>
+
+</section>
+
+<section id="contact" class="contact">
+
+  <h1>Contact Me</h1>
+
+  <div class="contact-container">
+
+    <div class="contact-info">
+
+      <p>
+        <strong>📍 Address:</strong>
+        Bataraza, Palawan.
+      </p>
+
+      <p>
+        <strong>✉️ Email:</strong>
+        tatzkiezuyanib@gmail.com
+      </p>
+
+      <p>
+        <strong>📞 Phone:</strong>
+      </p>
+
+    </div>
+
+    <div class="contact-form">
+
+      <form>
+
+        <div class="form-group">
+
+          <input
+            type="text"
+            placeholder="Name"
+            required
+          >
+
+          <input
+            type="email"
+            placeholder="Email"
+            required
+          >
+
+        </div>
+
+        <div class="form-group">
+
+          <input
+            type="text"
+            placeholder="Phone Number"
+            required
+          >
+
+          <input
+            type="text"
+            placeholder="Subject"
+            required
+          >
+
+        </div>
+
+        <textarea
+          placeholder="Message"
+          required
+        ></textarea>
+
+        <button type="submit">
+          Send Message
+        </button>
+
+      </form>
+
+    </div>
+
+  </div>
+
+  <div class="map-section">
+
+    <h2>📍 Find Me on Google Maps</h2>
+
+    <iframe
+      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3912.123456789!2d117.123456!3d8.123456!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x323456789abcdef%3A0xabcdef123456789!2sBataraza%2C%20Palawan!5e0!3m2!1sen!2sph!4v1699999999999!5m2!1sen!2sph"
+      allowfullscreen=""
+      loading="lazy"
+    ></iframe>
+
+  </div>
+
+</section>
+
+<footer>
+  <p>
+    "2025,Tat'zkiez, | BSIS | Bachelor of Science in Information System."
+  </p>
+</footer>
+
+<script>
+
+function scrollToHome() {
+  document
+    .getElementById("home")
+    .scrollIntoView({
+      behavior: "smooth"
+    });
+}
+
+/* =====================================================
+   PROJECT OPENING FUNCTIONS
+   ===================================================== */
+
+function hideAllProjectDetails() {
+
+  document
+    .getElementById("projects")
+    .style.display = "none";
+
+  document
+    .getElementById("videoProject")
+    .classList.remove("active");
+
+  document
+    .getElementById("galleryProject")
+    .classList.remove("active");
+
+  document
+    .getElementById("filesProject")
+    .classList.remove("active");
+}
+
+function openVideoProject(event) {
+
+  event.preventDefault();
+
+  hideAllProjectDetails();
+
+  document
+    .getElementById("videoProject")
+    .classList.add("active");
+
+  document
+    .getElementById("videoProject")
+    .scrollIntoView({
+      behavior: "smooth"
+    });
+}
+
+function openGalleryProject(event) {
+
+  event.preventDefault();
+
+  hideAllProjectDetails();
+
+  document
+    .getElementById("galleryProject")
+    .classList.add("active");
+
+  document
+    .getElementById("galleryProject")
+    .scrollIntoView({
+      behavior: "smooth"
+    });
+}
+
+function openFilesProject(event) {
+
+  event.preventDefault();
+
+  hideAllProjectDetails();
+
+  document
+    .getElementById("filesProject")
+    .classList.add("active");
+
+  document
+    .getElementById("filesProject")
+    .scrollIntoView({
+      behavior: "smooth"
+    });
+}
+
+function backToProjects(event) {
+
+  event.preventDefault();
+
+  document
+    .getElementById("videoProject")
+    .classList.remove("active");
+
+  document
+    .getElementById("galleryProject")
+    .classList.remove("active");
+
+  document
+    .getElementById("filesProject")
+    .classList.remove("active");
+
+  document
+    .getElementById("projects")
+    .style.display = "block";
+
+  document
+    .getElementById("projects")
+    .scrollIntoView({
+      behavior: "smooth"
+    });
+}
+
+/* =====================================================
+   GENERAL MEDIA UPLOAD
+   ===================================================== */
+
+const pictureInput =
+  document.getElementById("pictureInput");
+
+const videoInput =
+  document.getElementById("videoInput");
+
+const mediaGallery =
+  document.getElementById("mediaGallery");
+
+/* =====================================================
+   PICTURE UPLOAD
+   ===================================================== */
+
+if (pictureInput) {
+
+  pictureInput.addEventListener(
+    "change",
+    function() {
+
+      const files =
+        Array.from(this.files);
+
+      files.forEach(function(file) {
+
+        const mediaItem =
+          document.createElement("div");
+
+        mediaItem.className =
+          "media-item";
+
+        const fileURL =
+          URL.createObjectURL(file);
+
+        const image =
+          document.createElement("img");
+
+        image.src =
+          fileURL;
+
+        image.alt =
+          file.name;
+
+        mediaItem.appendChild(image);
+
+        const title =
+          document.createElement("h3");
+
+        title.textContent =
+          file.name;
+
+        mediaItem.appendChild(title);
+
+        const deleteButton =
+          document.createElement("button");
+
+        deleteButton.textContent =
+          "Delete";
+
+        deleteButton.className =
+          "delete-media";
+
+        deleteButton.onclick =
+          function() {
+
+            mediaItem.remove();
+
+            URL.revokeObjectURL(fileURL);
+
+          };
+
+        mediaItem.appendChild(
+          deleteButton
+        );
+
+        mediaGallery.appendChild(
+          mediaItem
+        );
+
+      });
+
+      pictureInput.value = "";
+
+    }
+  );
+
+}
+
+/* =====================================================
+   VIDEO UPLOAD
+   ===================================================== */
+
+if (videoInput) {
+
+  videoInput.addEventListener(
+    "change",
+    function() {
+
+      const files =
+        Array.from(this.files);
+
+      files.forEach(function(file) {
+
+        const mediaItem =
+          document.createElement("div");
+
+        mediaItem.className =
+          "media-item";
+
+        const fileURL =
+          URL.createObjectURL(file);
+
+        const video =
+          document.createElement("video");
+
+        video.src =
+          fileURL;
+
+        video.controls =
+          true;
+
+        video.playsInline =
+          true;
+
+        mediaItem.appendChild(video);
+
+        const title =
+          document.createElement("h3");
+
+        title.textContent =
+          file.name;
+
+        mediaItem.appendChild(title);
+
+        const deleteButton =
+          document.createElement("button");
+
+        deleteButton.textContent =
+          "Delete";
+
+        deleteButton.className =
+          "delete-media";
+
+        deleteButton.onclick =
+          function() {
+
+            mediaItem.remove();
+
+            URL.revokeObjectURL(fileURL);
+
+          };
+
+        mediaItem.appendChild(
+          deleteButton
+        );
+
+        mediaGallery.appendChild(
+          mediaItem
+        );
+
+      });
+
+      videoInput.value = "";
+
+    }
+  );
+
+}
+
+/* =====================================================
+   TAT'Z VIDEO UPLOAD
+   ===================================================== */
+
+const projectVideoInput =
+  document.getElementById("projectVideoInput");
+
+const videoProjectGallery =
+  document.getElementById("videoProjectGallery");
+
+projectVideoInput.addEventListener(
+  "change",
+  function() {
+
+    const files =
+      Array.from(this.files);
+
+    files.forEach(function(file) {
+
+      const item =
+        document.createElement("div");
+
+      item.className =
+        "detail-item";
+
+      const fileURL =
+        URL.createObjectURL(file);
+
+      const video =
+        document.createElement("video");
+
+      video.src =
+        fileURL;
+
+      video.controls =
+        true;
+
+      video.playsInline =
+        true;
+
+      item.appendChild(video);
+
+      const title =
+        document.createElement("h3");
+
+      title.textContent =
+        file.name;
+
+      item.appendChild(title);
+
+      const deleteButton =
+        document.createElement("button");
+
+      deleteButton.textContent =
+        "Delete";
+
+      deleteButton.className =
+        "delete-media";
+
+      deleteButton.onclick =
+        function() {
+
+          item.remove();
+
+          URL.revokeObjectURL(fileURL);
+
+        };
+
+      item.appendChild(
+        deleteButton
+      );
+
+      videoProjectGallery.appendChild(
+        item
+      );
+
+    });
+
+    projectVideoInput.value = "";
+
+  }
+);
+
+/* =====================================================
+   TAT'Z GALLERY UPLOAD
+   ===================================================== */
+
+const projectPictureInput =
+  document.getElementById("projectPictureInput");
+
+const galleryProjectGallery =
+  document.getElementById("galleryProjectGallery");
+
+projectPictureInput.addEventListener(
+  "change",
+  function() {
+
+    const files =
+      Array.from(this.files);
+
+    files.forEach(function(file) {
+
+      const item =
+        document.createElement("div");
+
+      item.className =
+        "detail-item";
+
+      const fileURL =
+        URL.createObjectURL(file);
+
+      const image =
+        document.createElement("img");
+
+      image.src =
+        fileURL;
+
+      image.alt =
+        file.name;
+
+      item.appendChild(image);
+
+      const title =
+        document.createElement("h3");
+
+      title.textContent =
+        file.name;
+
+      item.appendChild(title);
+
+      const deleteButton =
+        document.createElement("button");
+
+      deleteButton.textContent =
+        "Delete";
+
+      deleteButton.className =
+        "delete-media";
+
+      deleteButton.onclick =
+        function() {
+
+          item.remove();
+
+          URL.revokeObjectURL(fileURL);
+
+        };
+
+      item.appendChild(
+        deleteButton
+      );
+
+      galleryProjectGallery.appendChild(
+        item
+      );
+
+    });
+
+    projectPictureInput.value = "";
+
+  }
+);
+
+/* =====================================================
+   MY TAT'Z FILES UPLOAD
+   ===================================================== */
+
+const projectFileInput =
+  document.getElementById("projectFileInput");
+
+const filesProjectGallery =
+  document.getElementById("filesProjectGallery");
+
+projectFileInput.addEventListener(
+  "change",
+  function() {
+
+    const files =
+      Array.from(this.files);
+
+    files.forEach(function(file) {
+
+      const item =
+        document.createElement("div");
+
+      item.className =
+        "detail-item";
+
+      const fileURL =
+        URL.createObjectURL(file);
+
+      const fileBox =
+        document.createElement("div");
+
+      fileBox.className =
+        "file-item";
+
+      const icon =
+        document.createElement("div");
+
+      icon.className =
+        "file-icon";
+
+      icon.textContent =
+        "📁";
+
+      const fileLink =
+        document.createElement("a");
+
+      fileLink.href =
+        fileURL;
+
+      fileLink.target =
+        "_blank";
+
+      fileLink.textContent =
+        file.name;
+
+      fileLink.download =
+        file.name;
+
+      fileBox.appendChild(icon);
+
+      fileBox.appendChild(fileLink);
+
+      item.appendChild(fileBox);
+
+      const deleteButton =
+        document.createElement("button");
+
+      deleteButton.textContent =
+        "Delete";
+
+      deleteButton.className =
+        "delete-media";
+
+      deleteButton.onclick =
+        function() {
+
+          item.remove();
+
+          URL.revokeObjectURL(fileURL);
+
+        };
+
+      item.appendChild(
+        deleteButton
+      );
+
+      filesProjectGallery.appendChild(
+        item
+      );
+
+    });
+
+    projectFileInput.value = "";
+
+  }
+);
+
+</script>
+
+</body>
+</html>
